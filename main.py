@@ -136,11 +136,15 @@ class MyWidget(QMainWindow):
     def run(self):
         x = self.spinBox.value()
         text = self.lineEdit.text()
-        print(text, x)
-        if '^' not in text:
+        print(text, type(x))
+        if not text:
+            pass
+        elif '^' not in text:
             self.graphicsView.clear()
             self.graphicsView.plot([i for i in range(10)], [i for i in range(10)], pen='r')
         elif '^2' in text:
+            for i in x:
+                pass
             self.graphicsView.clear()
             self.graphicsView.plot([i for i in range(10)], [i ** 2 for i in range(10)], pen='r')
         elif '^3' in text:
