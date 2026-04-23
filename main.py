@@ -34,7 +34,7 @@ template = """<?xml version="1.0" encoding="UTF-8"?>
       <x>0</x>
       <y>430</y>
       <width>651</width>
-      <height>101</height>
+      <height>122</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -60,6 +60,16 @@ template = """<?xml version="1.0" encoding="UTF-8"?>
      </item>
      <item>
       <widget class="QLineEdit" name="lineEdit"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Выберите диапазон х ниже</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="spinBox"/>
      </item>
     </layout>
    </widget>
@@ -112,6 +122,7 @@ template = """<?xml version="1.0" encoding="UTF-8"?>
  <resources/>
  <connections/>
 </ui>
+
 """
 
 class MyWidget(QMainWindow):
@@ -123,8 +134,9 @@ class MyWidget(QMainWindow):
         self.pushButton_2.clicked.connect(self.dele)
 
     def run(self):
+        x = self.spinBox.value()
         text = self.lineEdit.text()
-        print(text)
+        print(text, x)
         if '^' not in text:
             self.graphicsView.clear()
             self.graphicsView.plot([i for i in range(10)], [i for i in range(10)], pen='r')
