@@ -2,6 +2,8 @@ import sys
 
 import io
 from PyQt6 import QtCore, QtMultimedia, uic
+from PyQt6.QtCore import QUrl
+from PyQt6.QtMultimedia import QMediaPlayer, QAudioOutput
 from PyQt6.QtWidgets import QApplication, QMainWindow
 from PyQt6.QtGui import QKeySequence, QShortcut
 template = """<?xml version="1.0" encoding="UTF-8"?>
@@ -155,6 +157,10 @@ class MyWidget(QMainWindow):
         do = QShortcut(QKeySequence('Z'), self)
         do.activated.connect(self.do)
 
+        self.player = QMediaPlayer()
+        self.audio_output = QAudioOutput()
+        self.player.setAudioOutput(self.audio_output)
+
 
         self.pushButton_2.clicked.connect(self.re)
         re = QShortcut(QKeySequence('X'), self)
@@ -193,20 +199,43 @@ class MyWidget(QMainWindow):
 
 
     def do(self):
+        self.player.setSource(QUrl.fromLocalFile("noty-do.mp3"))
+        self.player.play()
         print('do')
+
     def re(self):
+        self.player.setSource(QUrl.fromLocalFile("re.mp3"))
+        self.player.play()
         print('re')
+
     def mi(self):
+        self.player.setSource(QUrl.fromLocalFile("mi.mp3"))
+        self.player.play()
         print('mi')
+
     def fa(self):
+        self.player.setSource(QUrl.fromLocalFile("fa.mp3"))
+        self.player.play()
         print('fa')
+
     def sol(self):
+        self.player.setSource(QUrl.fromLocalFile("sol.mp3"))
+        self.player.play()
         print('sol')
+
     def la(self):
+        self.player.setSource(QUrl.fromLocalFile("lja.mp3"))
+        self.player.play()
         print('la')
+
     def si(self):
+        self.player.setSource(QUrl.fromLocalFile("si.mp3"))
+        self.player.play()
         print('si')
+
     def music(self):
+        self.player.setSource(QUrl.fromLocalFile("vdo.mp3"))
+        self.player.play()
         print('music')
 
 
